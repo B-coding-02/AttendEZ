@@ -1,0 +1,10 @@
+AttendEZ/
+├── frontend/       # Your React.js frontend
+│   └── (React app code)
+├── backend/        # New folder for backend
+│   ├── models/     # For Mongoose schemas
+│   ├── routes/     # API route definitions
+│   ├── config/     # Configuration files (e.g., DB connection)
+│   ├── controllers/ # Business logic for routes
+│   ├── server.js   # Entry point for backend
+│   └── package.json
