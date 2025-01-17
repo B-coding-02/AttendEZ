@@ -1,0 +1,19 @@
+src/
+├── components/
+│   ├── Navbar.js
+│   ├── Dashboard.js
+│   ├── Attendance.js
+│   ├── ClassList.js
+        ClassManager.js
+│   ├── StudentDetails.js
+│   ├── AddStudent.js
+│   └── Login.js
+├── pages/
+│   ├── Home.js
+│   ├── About.js
+│   └── Contact.js
+├── utils/
+│   └── api.js
+├── App.js
+├── index.js
+└── App.css
