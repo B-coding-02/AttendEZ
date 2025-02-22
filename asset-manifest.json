@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/AttendEZ/static/css/main.2d6848f7.css",
+    "main.js": "/AttendEZ/static/js/main.3260756a.js",
+    "index.html": "/AttendEZ/index.html",
+    "main.2d6848f7.css.map": "/AttendEZ/static/css/main.2d6848f7.css.map",
+    "main.3260756a.js.map": "/AttendEZ/static/js/main.3260756a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2d6848f7.css",
+    "static/js/main.3260756a.js"
+  ]
+}
