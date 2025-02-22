@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/AttendEZ/static/css/main.2d6848f7.css",
-    "main.js": "/AttendEZ/static/js/main.3260756a.js",
+    "main.js": "/AttendEZ/static/js/main.630b3819.js",
     "index.html": "/AttendEZ/index.html",
     "main.2d6848f7.css.map": "/AttendEZ/static/css/main.2d6848f7.css.map",
-    "main.3260756a.js.map": "/AttendEZ/static/js/main.3260756a.js.map"
+    "main.630b3819.js.map": "/AttendEZ/static/js/main.630b3819.js.map"
   },
   "entrypoints": [
     "static/css/main.2d6848f7.css",
-    "static/js/main.3260756a.js"
+    "static/js/main.630b3819.js"
   ]
 }
