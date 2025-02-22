@@ -43,6 +43,10 @@
 
 // export default Dashboard;
 
+
+// another dashboard layout //
+
+
 // src/components/Dashboard.js
 import React from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';

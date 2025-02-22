@@ -22,17 +22,12 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/registration" element={<Registration />} />
+        <Route path="/register" element={<Registration />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         {/* Protect the dashboard route */}
-        <Route path="/dashboard" element={
-          <ProtectedRoute roles={['admin', 'user']}><Dashboard /></ProtectedRoute>} />
-        <Route path="/classes" element={
-          <ProtectedRoute roles={['admin']}>
-            <ClassList />
-          </ProtectedRoute>
-        } />
+        <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+        <Route path="/classes" element={<ProtectedRoute><ClassList /></ProtectedRoute>} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/unauthorized" element={<Unauthorized />} />
       </Routes>

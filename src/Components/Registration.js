@@ -1,64 +1,100 @@
-// src/components/Registration.js
 import React, { useState } from 'react';
-import { Container, Form, Button, Alert } from 'react-bootstrap';
-import axios from 'axios';
+import { Form, Button, Alert } from 'react-bootstrap';
 
-function Registration() {
-  const [formData, setFormData] = useState({ username: '', password: '' });
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState(false);
+const Registration = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [contactNo, setContactNo] = useState('');
+  const [password, setPassword] = useState('');
+  const [token, setToken] = useState(''); // Admin token state
+  const [message, setMessage] = useState('');
+  const [isSuccess, setIsSuccess] = useState(false); // New state to track success or failure
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = async (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/auth/register', formData);
-      setSuccess(true);
-      setError('');
+      const response = await fetch('/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, contact: contactNo, password, token }) // Include the token
+      });
+      const data = await response.json();
+      if (response.ok) {
+        setMessage('Registration successful!');
+        setIsSuccess(true); // Indicate success
+      } else {
+        setMessage(data.message || 'Registration failed.');
+        setIsSuccess(false); // Indicate failure
+      }
     } catch (error) {
-      setError('Registration failed. Please try again.');
-      console.error('Error registering:', error);
+      setMessage('An error occurred. Please try again.');
+      setIsSuccess(false); // Indicate failure
     }
   };
 
   return (
-    <Container className="mt-5">
-      <h1 className="text-center">Register</h1>
-      {error && <Alert variant="danger">{error}</Alert>}
-      {success && <Alert variant="success">Registration successful!</Alert>}
-      <Form onSubmit={handleSubmit}>
-        <Form.Group controlId="formUsername">
-          <Form.Label>Username</Form.Label>
+    <div className="container mt-5">
+      <h2>Register</h2>
+      {message && (
+        <Alert variant={isSuccess ? 'success' : 'danger'}>{message}</Alert>
+      )}
+      <Form onSubmit={handleRegister}>
+        <Form.Group className="mb-3" controlId="formBasicName">
+          <Form.Label>Name</Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter username"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
             required
           />
         </Form.Group>
-        <Form.Group controlId="formPassword" className="mt-3">
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Email address</Form.Label>
+          <Form.Control
+            type="email"
+            placeholder="Enter email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicContactNo">
+          <Form.Label>Contact No.</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter contact no."
+            value={contactNo}
+            onChange={(e) => setContactNo(e.target.value)}
+            required
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
           <Form.Control
             type="password"
-            placeholder="Enter password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             required
           />
         </Form.Group>
-        <Button variant="primary" type="submit" className="mt-3">
+        <Form.Group className="mb-3" controlId="formBasicToken">
+          <Form.Label>Admin Token</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter admin token"
+            value={token}
+            onChange={(e) => setToken(e.target.value)}
+            required
+          />
+        </Form.Group>
+        <Button variant="primary" type="submit">
           Register
         </Button>
       </Form>
-    </Container>
+    </div>
   );
-}
+};
 
 export default Registration;
